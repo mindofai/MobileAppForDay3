@@ -1,5 +1,4 @@
 ﻿using MobileAppForDay3.Models;
-using MobileAppForDay3.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -134,16 +133,12 @@ namespace MobileAppForDay3.ViewModels
         public Command RefreshDebtsCommand =>
             _refreshDebtsCommand ?? (_refreshDebtsCommand = new Command(async () => await RefreshDebts()));
 
-        private AzureMobileService _azureMobileService;
-
 
         #endregion
 
         #region Constructor
         public MainPageViewModel()
         {
-
-            _azureMobileService = DependencyService.Get<AzureMobileService>();
 
             Debts = new List<Debt>();
             SelectedDebt = new Debt();
@@ -161,8 +156,6 @@ namespace MobileAppForDay3.ViewModels
             Device.BeginInvokeOnMainThread(async () =>
             {
                 IsRefreshBusy = true;
-                var debts = await _azureMobileService.GetAllDebts();
-                Debts = debts.Where(d => d.IsPaid == false).ToList();
                 IsRefreshBusy = false;
             });
         }
@@ -171,8 +164,6 @@ namespace MobileAppForDay3.ViewModels
         {
             IsBusy = true;
 
-            if (!await _azureMobileService.UpdateDebt(SelectedDebt))
-                return;
 
             await RefreshDebts();
 
@@ -190,8 +181,6 @@ namespace MobileAppForDay3.ViewModels
                 IsPaid = false
             };
 
-            if (!await _azureMobileService.AddDebt(debt))
-                return;
 
             await RefreshDebts();
             IsBusy = false;
