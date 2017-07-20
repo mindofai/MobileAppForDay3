@@ -186,7 +186,7 @@ namespace MobileAppForDay3.ViewModels
             var debt = new Debt()
             {
                 Name = NameValue,
-                Amount = Convert.ToInt16(AmountValue),
+                Amount = Convert.ToDouble(AmountValue),
                 IsPaid = false
             };
 
