@@ -1,5 +1,4 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
-using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
 using Microsoft.WindowsAzure.MobileServices.Sync;
 using MobileAppForDay3.Models;
 using MobileAppForDay3.Services;

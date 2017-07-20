@@ -11,6 +11,7 @@ namespace MobileAppForDay3.Views
 {
     public partial class MainPage : ContentPage
     {
+        bool authenticated = false;
 
         public MainPage()
         {
@@ -29,10 +30,25 @@ namespace MobileAppForDay3.Views
         {
             base.OnAppearing();
             MainPageViewModel vm = (MainPageViewModel)BindingContext;
-            vm.RefreshDebtsCommand.Execute(null);
+
+            if (authenticated == true)
+            {
+                vm.RefreshDebtsCommand.Execute(null);
+            }
         }
 
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            if (App.Authenticator != null)
+                authenticated = await App.Authenticator.Authenticate();
 
-
+            // Set syncItems to true to synchronize the data on startup when offline is enabled.
+            if (authenticated == true)
+            {
+                loginBtn.IsVisible = false;
+                MainPageViewModel vm = (MainPageViewModel)BindingContext;
+                vm.RefreshDebtsCommand.Execute(null);
+            }
+        }
     }
 }

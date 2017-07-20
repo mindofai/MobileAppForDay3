@@ -55,6 +55,9 @@
             <Grid Grid.Row="2">
                 <Button BackgroundColor="Purple" Text="Add Debt" TextColor="White" Command="{Binding OpenAddCommand}"/>
             </Grid>
+            <Grid Grid.Row="2">
+                <Button x:Name="loginBtn" BackgroundColor="Purple" Text="Login" TextColor="White" Clicked="Button_Clicked"/>
+            </Grid>
        
         </Grid>
         <Grid BackgroundColor="#55000000" IsVisible="{Binding IsAddShow}">

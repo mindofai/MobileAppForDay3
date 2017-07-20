@@ -14,7 +14,7 @@ namespace MobileAppForDay3.Services
 
         private AzureManager()
         {
-            this.client = new MobileServiceClient("http://mobileappfordaythree.azurewebsites.net/");
+            this.client = new MobileServiceClient("http://mobileappsamplelast.azurewebsites.net");
         }
 
         public static AzureManager DefaultManager

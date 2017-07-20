@@ -17,5 +17,16 @@ namespace MobileAppForDay3
             MainPage = new MobileAppForDay3.Views.MainPage();
         }
 
+        public static IAuthenticate Authenticator { get; private set; }
+
+        public static void Init(IAuthenticate authenticator)
+        {
+            Authenticator = authenticator;
+        }
+
+    }
+    public interface IAuthenticate
+    {
+        Task<bool> Authenticate();
     }
 }
