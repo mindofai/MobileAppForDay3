@@ -8,7 +8,6 @@ using Android.Widget;
 using Android.OS;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
-using MobileAppForDay3.Services;
 
 namespace MobileAppForDay3.Droid
 {
